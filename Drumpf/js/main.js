@@ -1,16 +1,20 @@
 window.onload = function() {
 
 
-    var game = new Phaser.Game(1920, 1080, Phaser.AUTO, '', { preload: preload, create: create });
+    var game = new Phaser.Game(1920, 1080, Phaser.AUTO, '', { preload: preload, create: create, render: render });
 
     function preload () {
 
         game.load.image('logo', 'css/images/160716123606-trump-pence-new-logo-large-169.jpg');
         game.load.image('button', 'css/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
-        game.load.image('background', 'css/images/FLA20121022316_md.jpg');
+        // game.load.image('background', 'css/images/FLA20121022316_md.jpg');
 
         game.load.image('trump', 'css/images/TrumpPhenomenon2.jpg');
         game.load.image('opponent', 'css/images/TrumpPhenomenon2.jpg');
+
+        game.load.audio('mexican', []);
+        game.load.audio('arab', []);
+        game.load.audio('woman', []);
 
     }
 
@@ -26,8 +30,8 @@ window.onload = function() {
 
         game.stage.backgroundColor = "#fff";
 
-        var background = game.add.sprite(game.world.centerX, game.world.centerY, 'background');
-        background.anchor.setTo(0.5, 0.5);
+        // var background = game.add.sprite(game.world.centerX, game.world.centerY, 'background');
+        // background.anchor.setTo(0.5, 0.5);
 
         game.load.onLoadStart.add(loadStart, this);
         // game.load.onFileComplete.add(fileComplete, this);
@@ -46,6 +50,10 @@ window.onload = function() {
         game.load.start();
 
         button.visible = false;
+
+    }
+
+    function render() {
 
     }
 
