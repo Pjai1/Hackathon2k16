@@ -74,3 +74,8 @@ p {
 section {
     text-align: center;
 }
+
+canvas {   
+	display : block;   
+	margin : auto;
+}
