@@ -7,24 +7,31 @@ window.onload = function() {
 
         game.load.image('logo', 'css/images/160716123606-trump-pence-new-logo-large-169.jpg');
         game.load.image('button', 'css/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
+        game.load.image('background', 'css/images/FLA20121022316_md.jpg');
+
+        game.load.image('trump', 'css/images/TrumpPhenomenon2.jpg');
+        game.load.image('opponent', 'css/images/TrumpPhenomenon2.jpg');
 
     }
 
     var text;
     var button;
-    var x = 32;
+    var background;
+    var trump;
+    var opponent;
+    var x;
     var y = 80;
 
     function create () {
 
         game.stage.backgroundColor = "#fff";
 
-        // var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-        // logo.anchor.setTo(0.5, 0.5);
+        var background = game.add.sprite(game.world.centerX, game.world.centerY, 'background');
+        background.anchor.setTo(0.5, 0.5);
 
         game.load.onLoadStart.add(loadStart, this);
-        game.load.onFileComplete.add(fileComplete, this);
-        game.load.onLoadComplete.add(loadComplete, this);
+        // game.load.onFileComplete.add(fileComplete, this);
+        game.load.onLoadComplete.add(fileComplete, this);
 
         text = game.add.text(32, 32, 'Click to start Drumpf', { fill: '#000' });
         button = game.add.button(game.world.centerX - 95, 400, 'button', start, this, 2, 1, 0);
@@ -33,9 +40,8 @@ window.onload = function() {
     }
 
     function start() {
-
-        game.load.image('img1', 'css/images/TrumpPhenomenon2.jpg');
-        game.load.image('img2', 'css/images/TrumpPhenomenon2.jpg');
+        // trump = game.add.image(x1, y, 'img1');
+        // opponent = game.add.image(x2, y, 'img2');
 
         game.load.start();
 
@@ -47,17 +53,16 @@ window.onload = function() {
 
         text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
 
-        var newImage = game.add.image(x, y, cacheKey);
+        trump = game.add.image(100, y, 'trump');
+        opponent = game.add.image(1420, y, 'opponent');
 
-        newImage.scale.set(0.3);
+        trump.scale.set(0.3);
+        opponent.scale.set(0.3);
 
-        x += newImage.width + 20;
+        // x += trump.width + 20;
+        // x2 += opponent.width + 20;
 
-        if (x > 700)
-        {
-            x = 32;
-            y += 332;
-        }
+        text.visible = false;
 
     }
 
