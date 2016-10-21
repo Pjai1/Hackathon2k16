@@ -22,9 +22,11 @@ window.onload = function() {
     var button;
     var background;
     var trump;
+    var trumpHealth = 10;
+    var opponentHealth = 5;
     var opponent;
     var x;
-    var y = 80;
+    var y = 400;
 
     function create () {
 
@@ -59,19 +61,32 @@ window.onload = function() {
 
     function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 
+
         text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
 
         trump = game.add.image(100, y, 'trump');
-        opponent = game.add.image(1420, y, 'opponent');
+        opponent = game.add.sprite(1420, y, 'opponent');
+        var opponentTween = game.add.tween(opponent);
+        opponentTween.to({ y: 150 }, 5000, 'Linear', true, 0);
 
         trump.scale.set(0.3);
         opponent.scale.set(0.3);
+
+        // game.physics.enable(opponent, Phaser.Physics.ARCADE);
+        // opponent.body.y = 250;
 
         // x += trump.width + 20;
         // x2 += opponent.width + 20;
 
         text.visible = false;
 
+
+// var sprite = game.add.sprite(100, 100, 'sprite');    
+// var demoTween = game.add.tween(sprite).to({x:400,y:400},1000);    
+// demoTween.onComplete.add(function(){        
+//     sprite.x = 100; sprite.y = 100;        
+//     demoTween.start();    });    
+// demoTween.start();
     }
 
     function loadStart() {
