@@ -30,6 +30,7 @@ window.onload = function() {
     var trumpHealth = 10;
     var opponentHealth = 5;
     var opponent;
+    var click = 0;
     var x;
     var y = 400;
 
@@ -79,10 +80,18 @@ window.onload = function() {
         textAttack2 = game.add.text(720, 1015, 'Click to start Drumpf', { fill: '#000' });
         textAttack3 = game.add.text(1080, 1015, 'Click to start Drumpf', { fill: '#000' });
 
+        textAttack.inputEnabled = true;
+        textAttack2.inputEnabled = true;
+        textAttack3.inputEnabled = true;
+
+        textAttack.events.onInputDown.add(startAttack, this);
+        textAttack2.events.onInputDown.add(startAttack, this);
+        textAttack3.events.onInputDown.add(startAttack, this);
+
         trump = game.add.image(100, y, 'trump');
         opponent = game.add.sprite(1420, y, 'woman');
         var opponentTween = game.add.tween(opponent);
-        opponentTween.to({ y: 150 }, 5000, 'Linear', true, 0);
+        opponentTween.to({ y: 150 }, 1500, 'Linear', true, 0);
 
         trump.scale.set(1.5);
         opponent.scale.set(1.5);
@@ -95,6 +104,11 @@ window.onload = function() {
 
         text.visible = false;
 
+    }
+
+    function startAttack() {
+        click++;
+        console.log(click);
     }
 
     function loadStart() {
