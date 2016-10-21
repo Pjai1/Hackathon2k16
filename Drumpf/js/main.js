@@ -40,39 +40,8 @@ window.onload = function() {
 
         graphics = game.add.graphics(0, 980);
 
-        // var background = game.add.sprite(game.world.centerX, game.world.centerY, 'background');
-        // background.anchor.setTo(0.5, 0.5);
-
         game.load.onLoadStart.add(loadStart, this);
-        // game.load.onFileComplete.add(fileComplete, this);
-        game.load.onLoadComplete.add(fileComplete, this);
 
-        text = game.add.text(32, 32, 'Click to start Drumpf', { fill: '#000' });
-        button = game.add.button(game.world.centerX - 95, 400, 'button', start, this, 2, 1, 0);
-        button.anchor.setTo(0.5, 0.5);
-
-        // graphics.lineStyle(2, 0x0000FF, 1);
-        // graphics.beginFill(0xFF3300);
-
-    }
-
-    function start() {
-        // trump = game.add.image(x1, y, 'img1');
-        // opponent = game.add.image(x2, y, 'img2');
-
-        game.load.start();
-
-        button.visible = false;
-
-    }
-
-    function render() {
-
-    }
-
-    function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-
-        // text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
         graphics.lineStyle(4, 000, 1);
         graphics.drawRect(0, 0, 1890, 100);
 
@@ -96,13 +65,25 @@ window.onload = function() {
         trump.scale.set(1.5);
         opponent.scale.set(1.5);
 
-        // game.physics.enable(opponent, Phaser.Physics.ARCADE);
-        // opponent.body.y = 250;
-
-        // x += trump.width + 20;
-        // x2 += opponent.width + 20;
-
         text.visible = false;
+
+    }
+
+    function start() {
+
+        game.load.start();
+
+        button.visible = false;
+
+    }
+
+    function render() {
+
+    }
+
+    function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+
+        // text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
 
     }
 
@@ -111,15 +92,7 @@ window.onload = function() {
         click++;
         console.log(click);
 
-        // var tween = this.add.tween(press).to( { alpha: 1 }, 800, "Linear", false, 6000);
-        // tween.to( { alpha: 0 }, 800, "Linear", false, 100);
-        // tween.loop(true);
-        // tween.start();
-
         var trumpTween = game.add.tween(trump).to({ x: 350 }, 500, 'Linear', true, 0).to({ x: x }, 1500, 'Linear', true, 0);
-
-        // trumpTween.loop(true);
-        trumpTween.start();
 
     }
 
