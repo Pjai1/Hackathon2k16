@@ -75,7 +75,13 @@ section {
     text-align: center;
 }
 
-canvas {   
-	display : block;   
-	margin : auto;
+canvas {
+	display: block;   
+	margin: 0 auto;
+}
+
+.video-wrapper {
+    width: 720px;
+    display: block;
+    margin: 0 auto;
 }
