@@ -91,7 +91,7 @@ window.onload = function() {
         click++;
         console.log(click);
 
-        var trumpTween = game.add.tween(trump).to({ x: 350 }, 500, 'Linear', true, 0).to({ x: x }, 1500, 'Linear', true, 0);
+        var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 100 }, 2000, 'Linear').start();
 
     }
 
