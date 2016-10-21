@@ -5,8 +5,8 @@ window.onload = function() {
 
     function preload () {
 
-        game.load.image('logo', 'css/images/160716123606-trump-pence-new-logo-large-169.jpg');
-        game.load.image('button', 'css/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
+        game.load.image('logo', 'assets/images/160716123606-trump-pence-new-logo-large-169.jpg');
+        game.load.image('button', 'assets/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
         // game.load.image('background', 'css/images/FLA20121022316_md.jpg');
 
         game.load.image('trump', 'assets/trumpHead.png');
@@ -107,8 +107,20 @@ window.onload = function() {
     }
 
     function startAttack() {
+
         click++;
         console.log(click);
+
+        // var tween = this.add.tween(press).to( { alpha: 1 }, 800, "Linear", false, 6000);
+        // tween.to( { alpha: 0 }, 800, "Linear", false, 100);
+        // tween.loop(true);
+        // tween.start();
+
+        var trumpTween = game.add.tween(trump).to({ x: 350 }, 500, 'Linear', true, 0).to({ x: x }, 1500, 'Linear', true, 0);
+
+        // trumpTween.loop(true);
+        trumpTween.start();
+
     }
 
     function loadStart() {
