@@ -76,12 +76,6 @@ section {
 }
 
 canvas {   
-	display: block;   
-	margin: 0 auto;
-}
-
-.video-wrapper {
-    width: 720px;
-    display: block;
-    margin: 0 auto;
+	display : block;   
+	margin : auto;
 }
