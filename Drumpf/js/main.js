@@ -11,14 +11,32 @@ window.onload = function() {
         game.load.image('trump', 'assets/trumpHead.png');
         game.load.image('woman', 'assets/womanGif.gif');
         game.load.image('hilary', 'assets/hillaryHead.png');
-        game.load.image('mexican', 'assets/mexicanHead.png');
+        game.load.image('mexican', 'assets/mexicanGif.gif');
 
-        // game.load.audio('mexican', []);
+        game.load.audio('mex1', 'assets/audio/AndMexicoWillPayForTheWall.mp3');
+        game.load.audio('mex2', 'assets/audio/WhenDoWeBeatMexicoAtTheBorder.mp3');
+        game.load.audio('mex3', 'assets/audio/IWouldBuildAGreatWall.mp3');
+
+        game.load.audio('hil1', 'assets/audio/BloodCommingOutOfHerEyes.mp3');
+        game.load.audio('hil2', 'assets/audio/IThinkHillaryWouldBeATerriblePresident.mp3');
+        game.load.audio('hil3', 'assets/audio/ProbablyMabeySheWasentAllowedToHaveAnythingToSay.mp3');
+
+        game.load.audio('wom1', 'assets/audio/GrabThemByThePussy.mp3');
+        // game.load.audio('wom2', 'assets/audio/.mp3');
+        // game.load.audio('wom3', 'assets/audio/.mp3');
+
+        game.load.audio('rnd1', 'assets/audio/FreeTradeCanBeWonderFullIfYouHaveSmartPeopleButWeHavePeopleWhoAreStupid.mp3');
+        game.load.audio('rnd2', 'assets/audio/HeIsAWarHeroCauseHeGotCaptured.mp3');
+        game.load.audio('rnd3', 'assets/audio/IAmANicePerson.mp3');
+
         // game.load.audio('arab', []);
         // game.load.audio('woman', []);
 
     }
 
+    var levelStr = "mex";
+    var rndStr = "rnd";
+    var rnd;
     var graphics;
     var textAttack;
     var textAttack2;
@@ -42,15 +60,19 @@ window.onload = function() {
 
         graphics = game.add.graphics(0, 980);
 
+        // music = game.add.audio('mex1');
+
+        // music.play();
+
         game.load.onLoadStart.add(loadStart, this);
 
         graphics.lineStyle(10, 000, 1);
         graphics.drawRect(0, -605, 640, 100);
 
-        textAttack = game.add.text(100, 390, 'Click to start Drumpf', { fill: '#000', fontSize: '18px' });
-        textAttack2 = game.add.text(380, 390, 'Click to start Drumpf', { fill: '#000', fontSize: '18px' });
-        textAttack3 = game.add.text(100, 440, 'Click to start Drumpf', { fill: '#000', fontSize: '18px' });
-        textAttack4 = game.add.text(380, 440, 'Click to start Drumpf', { fill: '#000', fontSize: '18px' });
+        textAttack = game.add.text(100, 390, 'Pay For Wall', { fill: '#000', fontSize: '18px' });
+        textAttack2 = game.add.text(380, 390, 'Beat Them At Border', { fill: '#000', fontSize: '18px' });
+        textAttack3 = game.add.text(100, 440, "Wall'em", { fill: '#000', fontSize: '18px' });
+        textAttack4 = game.add.text(380, 440, 'TrumpNation', { fill: '#000', fontSize: '18px' });
 
         textTrumpHP = game.add.text(70, 160, "HP: " + trumpHealth + "/10", { fill: '#000', fontSize: '18px' });
         textTrumpHP.visible = false;
@@ -70,12 +92,12 @@ window.onload = function() {
         textAttack4.events.onInputDown.add(startAttack, this);
 
         trump = game.add.image(50, y, 'trump');
-        opponent = game.add.sprite(520, y, 'woman');
+        opponent = game.add.sprite(520, y, 'mexican');
         var opponentTween = game.add.tween(opponent);
         opponentTween.to({ y: 50 }, 2000, 'Linear', true, 0);
 
         trump.scale.set(0.4);
-        opponent.scale.set(1.2);
+        opponent.scale.set(1.5);
 
         // text.visible = false;
 
@@ -94,7 +116,7 @@ window.onload = function() {
     }
 
     function render() {
-
+        // game.debug.soundInfo(music, 20, 32);
     }
 
     function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
@@ -103,15 +125,38 @@ window.onload = function() {
 
     }
 
-    function startAttack() {
+    function startAttack(e) {
 
+        rnd = Math.ceil(Math.random()*3);
         click++;
-        console.log(click);
-        opponentHealth--;
-        textOpponentHP.setText("HP: " + opponentHealth + "/5");
+        console.log(rnd);
+
+        if(e.z < 4) {
+            music = game.add.audio(levelStr + e.z);
+
+            music.play();
+        }
+        else {
+            music = game.add.audio(rndStr + rnd);
+
+            music.play();           
+        }
+
+        if(opponentHealth != 0) {
+            opponentHealth--;
+            textOpponentHP.setText("HP: " + opponentHealth + "/5");
+        }
+        else {
+            opponentHealth = 5;
+            textTrumpHP.setText("lyl");
+        }
 
         var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
 
+    }
+
+    function victory() {
+        window.open("victory.html", "_blank");
     }
 
     function loadStart() {
