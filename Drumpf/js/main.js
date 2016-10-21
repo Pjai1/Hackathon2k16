@@ -12,9 +12,9 @@ window.onload = function() {
         game.load.image('trump', 'css/images/TrumpPhenomenon2.jpg');
         game.load.image('opponent', 'css/images/TrumpPhenomenon2.jpg');
 
-        game.load.audio('mexican', []);
-        game.load.audio('arab', []);
-        game.load.audio('woman', []);
+        // game.load.audio('mexican', []);
+        // game.load.audio('arab', []);
+        // game.load.audio('woman', []);
 
     }
 
