@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    var game = new Phaser.Game(640, 480, Phaser.AUTO, '', { preload: preload, create: create, render: render });
+    var game = new Phaser.Game(640, 480, Phaser.AUTO, '', { preload: preload, create: create, render: render, update: update });
 
     function preload () {
 
@@ -24,6 +24,8 @@ window.onload = function() {
     var textAttack2;
     var textAttack3;
     var textAttack4;
+    var textTrumpHP;
+    var textOpponentHP;
     var button;
     var background;
     var trump;
@@ -50,6 +52,13 @@ window.onload = function() {
         textAttack3 = game.add.text(100, 440, 'Click to start Drumpf', { fill: '#000', fontSize: '18px' });
         textAttack4 = game.add.text(380, 440, 'Click to start Drumpf', { fill: '#000', fontSize: '18px' });
 
+        textTrumpHP = game.add.text(70, 160, "HP: " + trumpHealth + "/10", { fill: '#000', fontSize: '18px' });
+        textTrumpHP.visible = false;
+        game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
+        textOpponentHP = game.add.text(520, 150, "HP: " + opponentHealth + "/5", { fill: '#000', fontSize: '18px' });
+        textOpponentHP.visible = false;
+        game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
+
         textAttack.inputEnabled = true;
         textAttack2.inputEnabled = true;
         textAttack3.inputEnabled = true;
@@ -68,7 +77,7 @@ window.onload = function() {
         trump.scale.set(0.4);
         opponent.scale.set(1.2);
 
-        text.visible = false;
+        // text.visible = false;
 
     }
 
@@ -77,6 +86,10 @@ window.onload = function() {
         game.load.start();
 
         button.visible = false;
+
+    }
+
+    function update() {
 
     }
 
@@ -94,8 +107,10 @@ window.onload = function() {
 
         click++;
         console.log(click);
+        opponentHealth--;
+        textOpponentHP.setText("HP: " + opponentHealth + "/5");
 
-        var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 100 }, 2000, 'Linear').start();
+        var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
 
     }
 
