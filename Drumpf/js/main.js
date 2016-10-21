@@ -9,8 +9,10 @@ window.onload = function() {
         game.load.image('button', 'css/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
         // game.load.image('background', 'css/images/FLA20121022316_md.jpg');
 
-        game.load.image('trump', 'css/images/TrumpPhenomenon2.jpg');
-        game.load.image('opponent', 'css/images/TrumpPhenomenon2.jpg');
+        game.load.image('trump', 'assets/trumpHead.png');
+        game.load.image('woman', 'assets/womanHead.png');
+        game.load.image('hilary', 'assets/hillaryHead.png');
+        game.load.image('mexican', 'assets/mexicanHead.png');
 
         // game.load.audio('mexican', []);
         // game.load.audio('arab', []);
@@ -18,7 +20,10 @@ window.onload = function() {
 
     }
 
-    var text;
+    var graphics;
+    var textAttack;
+    var textAttack2;
+    var textAttack3;
     var button;
     var background;
     var trump;
@@ -32,6 +37,8 @@ window.onload = function() {
 
         game.stage.backgroundColor = "#fff";
 
+        graphics = game.add.graphics(0, 980);
+
         // var background = game.add.sprite(game.world.centerX, game.world.centerY, 'background');
         // background.anchor.setTo(0.5, 0.5);
 
@@ -42,6 +49,9 @@ window.onload = function() {
         text = game.add.text(32, 32, 'Click to start Drumpf', { fill: '#000' });
         button = game.add.button(game.world.centerX - 95, 400, 'button', start, this, 2, 1, 0);
         button.anchor.setTo(0.5, 0.5);
+
+        // graphics.lineStyle(2, 0x0000FF, 1);
+        // graphics.beginFill(0xFF3300);
 
     }
 
@@ -61,16 +71,21 @@ window.onload = function() {
 
     function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 
+        // text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+        graphics.lineStyle(4, 000, 1);
+        graphics.drawRect(0, 0, 1890, 100);
 
-        text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+        textAttack = game.add.text(360, 1015, 'Click to start Drumpf', { fill: '#000' });
+        textAttack2 = game.add.text(720, 1015, 'Click to start Drumpf', { fill: '#000' });
+        textAttack3 = game.add.text(1080, 1015, 'Click to start Drumpf', { fill: '#000' });
 
         trump = game.add.image(100, y, 'trump');
-        opponent = game.add.sprite(1420, y, 'opponent');
+        opponent = game.add.sprite(1420, y, 'woman');
         var opponentTween = game.add.tween(opponent);
         opponentTween.to({ y: 150 }, 5000, 'Linear', true, 0);
 
-        trump.scale.set(0.3);
-        opponent.scale.set(0.3);
+        trump.scale.set(1.5);
+        opponent.scale.set(1.5);
 
         // game.physics.enable(opponent, Phaser.Physics.ARCADE);
         // opponent.body.y = 250;
@@ -80,13 +95,6 @@ window.onload = function() {
 
         text.visible = false;
 
-
-// var sprite = game.add.sprite(100, 100, 'sprite');    
-// var demoTween = game.add.tween(sprite).to({x:400,y:400},1000);    
-// demoTween.onComplete.add(function(){        
-//     sprite.x = 100; sprite.y = 100;        
-//     demoTween.start();    });    
-// demoTween.start();
     }
 
     function loadStart() {
