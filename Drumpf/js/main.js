@@ -5,12 +5,12 @@ window.onload = function() {
 
     function preload () {
 
-        game.load.image('logo', 'css/images/160716123606-trump-pence-new-logo-large-169.jpg');
-        game.load.image('button', 'css/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
-        game.load.image('background', 'css/images/FLA20121022316_md.jpg');
+        game.load.image('logo', 'assets/images/160716123606-trump-pence-new-logo-large-169.jpg');
+        game.load.image('button', 'assets/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
+        game.load.image('background', 'assets/images/FLA20121022316_md.jpg');
 
-        game.load.image('trump', 'css/images/TrumpPhenomenon2.jpg');
-        game.load.image('opponent', 'css/images/TrumpPhenomenon2.jpg');
+        game.load.image('trump', 'assets/images/TrumpPhenomenon2.jpg');
+        game.load.image('opponent', 'assets/images/TrumpPhenomenon2.jpg');
 
     }
 
