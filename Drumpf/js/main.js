@@ -147,7 +147,7 @@ window.onload = function() {
         click++;
         console.log(soundParam);
 
-        if(e.z < 8) {
+        if(soundParam < 4) {
             // e.z-=4;
             music = game.add.audio(levelStr + soundParam);
 
