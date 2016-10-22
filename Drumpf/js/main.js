@@ -22,8 +22,8 @@ window.onload = function() {
         game.load.audio('hil3', 'assets/audio/ProbablyMabeySheWasentAllowedToHaveAnythingToSay.mp3');
 
         game.load.audio('wom1', 'assets/audio/GrabThemByThePussy.mp3');
-        // game.load.audio('wom2', 'assets/audio/.mp3');
-        // game.load.audio('wom3', 'assets/audio/.mp3');
+        game.load.audio('wom2', 'assets/audio/NobodyHasMoreRespectForWomenThanIDo.mp3');
+        game.load.audio('wom3', 'assets/audio/SuchANastyWoman.mp3');
 
         game.load.audio('rnd1', 'assets/audio/FreeTradeCanBeWonderFullIfYouHaveSmartPeopleButWeHavePeopleWhoAreStupid.mp3');
         game.load.audio('rnd2', 'assets/audio/HeIsAWarHeroCauseHeGotCaptured.mp3');
@@ -36,6 +36,7 @@ window.onload = function() {
 
     var levelStr = "mex";
     var rndStr = "rnd";
+    var soundParam;
     var opponentSpriteValue;
     var rnd;
     var graphics;
@@ -54,6 +55,7 @@ window.onload = function() {
     var click = 0;
     var x;
     var y = 200;
+    var p = document.querySelector("p");
 
     function create () {
 
@@ -129,13 +131,14 @@ window.onload = function() {
 
     function startAttack(e) {
 
+        soundParam = this.param;
         rnd = Math.ceil(Math.random()*3);
         click++;
-        console.log(opponentSpriteValue);
+        console.log(soundParam);
 
         if(e.z < 8) {
             e.z-=4;
-            music = game.add.audio(levelStr + e.z);
+            music = game.add.audio(levelStr + soundParam);
 
             music.play();
         }
@@ -159,16 +162,24 @@ window.onload = function() {
 
             if(opponentSpriteValue == "woman") {
                 opponentSpriteValue = "hilary";
+                levelStr = "hil";
                 opponentHealth = 5;
                 opponent.loadTexture("hilary");
                 textOpponentHP.setText("HP: " + opponentHealth + "/5");
+                textAttack.setText("Make Her Bleed");
+                textAttack2.setText("Maledict Her");
+                textAttack3.setText("Shut Her Up");
             }
 
             if(opponentSpriteValue == "mexican") {
                 opponentSpriteValue = "woman";
+                levelStr = "wom";
                 opponentHealth = 5;
                 opponent.loadTexture("woman");
                 textOpponentHP.setText("HP: " + opponentHealth + "/5");
+                textAttack.setText("Grab Her Pussay");
+                textAttack2.setText("Respect Her");
+                textAttack3.setText("Nasty Woman");
             }
             // game.world.removeAll();
             // victory();
