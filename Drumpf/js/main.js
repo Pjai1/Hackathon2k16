@@ -81,30 +81,32 @@ window.onload = function() {
 
         setTimeout(function() {
             
-            graphics.lineStyle(5, 0x283681, 1);
+            graphics.lineStyle(3, 0x283681, 0.8);
+            graphics.beginFill(0x283681, 0.1);
             graphics.drawRect(10, 380, 610, 90);
+            graphics.endFill(); 
 
             // Trump shadow
-            graphics.lineStyle(5, 0x283681, 0.8);
+            graphics.lineStyle(3, 0x283681, 0.8);
             graphics.beginFill(0x000, 0.1);
             graphics.drawEllipse(110, 305, 80, 25);
             graphics.endFill();            
 
             // Opponent shadow
-            graphics.lineStyle(5, 0x8A171C, 0.8);
+            graphics.lineStyle(3, 0x8A171C, 0.8);
             graphics.beginFill(0x000, 0.1);
             graphics.drawEllipse(515, 155, 60, 15);
             graphics.endFill();   
 
-            infoText = game.add.text(10, 10, "DEFEAT THE MEXICANS!", { fill: '#000', fontSize: '24px' });
-            infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px', underline: "underline" })
+            infoText = game.add.text(10, 10, "DEFEAT THE MEXICANS!", { fill: '#000', fontSize: '24px', font: "Open Sans", fontWeight: 500 });
+            infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px', font: "Open Sans", fontWeight: 500 })
 
-            textAttack = game.add.text(120, 395, 'Make them pay', { fill: '#283681', fontSize: '18px' });
+            textAttack = game.add.text(120, 395, 'MAKE THEM PAY', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
             // textAttack.setAttribute('value', textAttack);
-            textAttack2 = game.add.text(360, 395, 'Border beatdown', { fill: '#283681', fontSize: '18px' });
-            textAttack3 = game.add.text(120, 435, "Build wall", { fill: '#283681', fontSize: '18px' });
-            textAttack4 = game.add.text(360, 435, 'Rant', { fill: '#283681', fontSize: '18px' });
-            transText = game.add.text(150, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '24px' });
+            textAttack2 = game.add.text(360, 395, 'BORDER BEATDOWN', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
+            textAttack3 = game.add.text(120, 435, "BUILD WALL", { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
+            textAttack4 = game.add.text(360, 435, 'RANT', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
+            transText = game.add.text(150, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '24px', font: "Open Sans", fontWeight: 500   });
             transText.visible = false;
 
             textAttack.inputEnabled = true;
@@ -133,10 +135,10 @@ window.onload = function() {
 
         }, 2000);
 
-        textTrumpHP = game.add.text(70, 120, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
+        textTrumpHP = game.add.text(70, 120, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px', font: "Open Sans", fontWeight: 500 });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
-        textOpponentHP = game.add.text(480, 185, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
+        textOpponentHP = game.add.text(480, 185, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px', font: "Open Sans", fontWeight: 500  });
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
@@ -256,9 +258,9 @@ window.onload = function() {
                     bossMusic.volume = 0.05;
                     bossMusic.play();
                     textOpponentHP.setText("HP: " + opponentHealth + "/5");
-                    textAttack.setText("Make Her Bleed");
-                    textAttack2.setText("Maledict Her");
-                    textAttack3.setText("Shut Her Up");
+                    textAttack.setText("VIOLENCE");
+                    textAttack2.setText("SLANDER");
+                    textAttack3.setText("SEXISM");
                 }, 2000);
             }
 
@@ -289,9 +291,9 @@ window.onload = function() {
                     textAttack4.visible = true;
                     opponent.loadTexture("woman");
                     textOpponentHP.setText("HP: " + opponentHealth + "/5");
-                    textAttack.setText("Grab Her Pussay");
-                    textAttack2.setText("Respect Her");
-                    textAttack3.setText("Nasty Woman");
+                    textAttack.setText("SEXISM");
+                    textAttack2.setText("RESPECT");
+                    textAttack3.setText("INSULT");
                 }, 2000);
             }
             // game.world.removeAll();
