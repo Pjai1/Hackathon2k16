@@ -10,7 +10,7 @@ window.onload = function() {
 
         game.load.image('trump', 'assets/trumpHead.png');
         game.load.image('woman', 'assets/womanGif.gif');
-        game.load.image('hilary', 'assets/hillaryHead.png');
+        game.load.image('hilary', 'assets/hillaryGif.gif');
         game.load.image('mexican', 'assets/mexicanGif.gif');
 
         game.load.audio('mex1', 'assets/audio/AndMexicoWillPayForTheWall.mp3');
@@ -36,6 +36,7 @@ window.onload = function() {
 
     var levelStr = "mex";
     var rndStr = "rnd";
+    var opponentSpriteValue;
     var rnd;
     var graphics;
     var textAttack;
@@ -94,7 +95,8 @@ window.onload = function() {
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
         trump = game.add.image(50, y, 'trump');
-        opponent = game.add.sprite(520, y, 'mexican');
+        opponentSpriteValue = "mexican";
+        opponent = game.add.sprite(520, y, opponentSpriteValue);
         var opponentTween = game.add.tween(opponent);
         opponentTween.to({ y: 50 }, 2000, 'Linear', true, 0);
 
@@ -129,7 +131,7 @@ window.onload = function() {
 
         rnd = Math.ceil(Math.random()*3);
         click++;
-        console.log(this.param);
+        console.log(opponentSpriteValue);
 
         if(e.z < 8) {
             e.z-=4;
@@ -149,9 +151,27 @@ window.onload = function() {
         }
 
         if(opponentHealth == 0) {
-            opponentHealth = 5;
-            game.world.removeAll();
-            victory();
+            if(opponentSpriteValue == "hilary") {
+                console.log("hilary");
+                game.world.removeAll();
+                victory();
+            }
+
+            if(opponentSpriteValue == "woman") {
+                opponentSpriteValue = "hilary";
+                opponentHealth = 5;
+                opponent.loadTexture("hilary");
+                textOpponentHP.setText("HP: " + opponentHealth + "/5");
+            }
+
+            if(opponentSpriteValue == "mexican") {
+                opponentSpriteValue = "woman";
+                opponentHealth = 5;
+                opponent.loadTexture("woman");
+                textOpponentHP.setText("HP: " + opponentHealth + "/5");
+            }
+            // game.world.removeAll();
+            // victory();
         }
 
         var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
@@ -175,7 +195,7 @@ window.onload = function() {
     }
 
     function victory() {
-        window.open("victory.html", "_blank");
+        window.open("victory.html#clip", "_blank");
     }
 
     function loadStart() {
