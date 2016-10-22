@@ -44,7 +44,7 @@ window.onload = function() {
     var textAttack4;
     var textTrumpHP;
     var textOpponentHP;
-    var button;
+    var victoryBtn;
     var background;
     var trump;
     var trumpHealth = 10;
@@ -57,12 +57,9 @@ window.onload = function() {
     function create () {
 
         game.stage.backgroundColor = "#fff";
+        victId.style.visibility = "hidden";
 
         graphics = game.add.graphics(0, 980);
-
-        // music = game.add.audio('mex1');
-
-        // music.play();
 
         game.load.onLoadStart.add(loadStart, this);
 
@@ -99,8 +96,6 @@ window.onload = function() {
         trump.scale.set(0.4);
         opponent.scale.set(1.5);
 
-        // text.visible = false;
-
     }
 
     function start() {
@@ -129,7 +124,7 @@ window.onload = function() {
 
         rnd = Math.ceil(Math.random()*3);
         click++;
-        console.log(rnd);
+        console.log(victId);
 
         if(e.z < 4) {
             music = game.add.audio(levelStr + e.z);
@@ -146,9 +141,11 @@ window.onload = function() {
             opponentHealth--;
             textOpponentHP.setText("HP: " + opponentHealth + "/5");
         }
-        else {
+
+        if(opponentHealth == 0) {
             opponentHealth = 5;
-            textTrumpHP.setText("lyl");
+            game.world.removeAll();
+            victory();
         }
 
         var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
