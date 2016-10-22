@@ -54,7 +54,7 @@ window.onload = function() {
     var opponent;
     var click = 0;
     var x;
-    var y = 200;
+    var y = 180;
     var p = document.querySelector("p");
 
     function create () {
@@ -70,6 +70,9 @@ window.onload = function() {
 
             graphics.lineStyle(5, "0x283681", 1);
             graphics.drawRect(10, -600, 610, 90);
+
+            infoText = game.add.text(20, 20, "DEFEAT YOUR ENEMY!", { fill: '#000', fontSize: '24px' });
+            infoTextAttacks = game.add.text(10, 350, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px' })
 
             textAttack = game.add.text(120, 395, 'Pay Wall', { fill: '#283681', fontSize: '18px' });
             // textAttack.setAttribute('value', textAttack);
@@ -93,7 +96,7 @@ window.onload = function() {
 
         }, 2000);
 
-        textTrumpHP = game.add.text(70, 160, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
+        textTrumpHP = game.add.text(70, 140, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
         textOpponentHP = game.add.text(520, 150, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
