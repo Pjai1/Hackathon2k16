@@ -12,6 +12,7 @@ window.onload = function() {
         game.load.image('woman', 'assets/womanGif.gif');
         game.load.image('hilary', 'assets/hillaryGif.gif');
         game.load.image('mexican', 'assets/mexicanGif.gif');
+        game.load.image('arrow', 'assets/images/arrow.gif');
 
         game.load.audio('mex1', 'assets/audio/AndMexicoWillPayForTheWall.mp3');
         game.load.audio('mex2', 'assets/audio/WhenDoWeBeatMexicoAtTheBorder.mp3');
@@ -40,6 +41,7 @@ window.onload = function() {
     var opponentSpriteValue;
     var rnd;
     var graphics;
+    var arrow;
     var textAttack;
     var textAttack2;
     var textAttack3;
@@ -103,6 +105,7 @@ window.onload = function() {
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
+        arrow = game.add.image(65, 385, 'arrow');
         trump = game.add.image(50, y, 'trump');
         opponentSpriteValue = "mexican";
         opponent = game.add.sprite(520, y, opponentSpriteValue);
@@ -111,6 +114,7 @@ window.onload = function() {
 
         trump.scale.set(0.4);
         opponent.scale.set(1.5);
+        arrow.scale.set(0.1);
 
     }
 
@@ -144,7 +148,7 @@ window.onload = function() {
         console.log(soundParam);
 
         if(e.z < 8) {
-            e.z-=4;
+            // e.z-=4;
             music = game.add.audio(levelStr + soundParam);
 
             music.play();
@@ -213,7 +217,7 @@ window.onload = function() {
     }
 
     function victory() {
-        window.open("victory.html#clip", "_blank");
+        window.location = "victory.html#clip";
     }
 
     function loadStart() {
