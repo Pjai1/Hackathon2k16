@@ -4,22 +4,23 @@
         <meta charset="UTF-8" />
         <title>Drumpf</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet">        
         <link href="assets/css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="bg">
+
+    	<div class="bg">
             <main>
                 <div class="heading-wrapper">
                     <a href="#" class="logo">Go To Home</a>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="intro.html">Start</a></li>
-                        <li><a href="soundboard.html">Soundboard</a></li>
-                        <li><a href="help.html">Help</a></li>
+                        <li><a href="index.html">Home</a></li>
                     </ul>
                 </nav>
+
+                <div id="game"></div>
+
             </main>
         </div>
         <!-- AddToAny BEGIN -->
@@ -31,5 +32,17 @@
         </div>
         <script async src="https://static.addtoany.com/menu/page.js"></script>
         <!-- AddToAny END -->
+
     </body>
+
+	<!--     <script type="text/javascript">
+	    	document.querySelector("nav").style.visibility = "hidden";
+
+	    	setTimeout(function () {
+	    		document.querySelector("nav").style.visibility = "visible";
+	    	}, 2000)
+	    </script> -->
+
+    <script src="js/phaser.js"></script>
+    <script src="js/soundboard.js"></script>
 </html>
