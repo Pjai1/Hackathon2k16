@@ -43,6 +43,9 @@ window.onload = function() {
     var rnd;
     var graphics;
     var arrow;
+    var arrow2;
+    var arrow3;
+    var arrow4;
     var textAttack;
     var textAttack2;
     var textAttack3;
@@ -101,6 +104,16 @@ window.onload = function() {
             textAttack3.events.onInputDown.add(startAttack, {param: 3});
             textAttack4.events.onInputDown.add(startAttack, {param: 4});
 
+            textAttack.events.onInputOver.add(showArrow, {param: 1});
+            textAttack2.events.onInputOver.add(showArrow, {param: 2});
+            textAttack3.events.onInputOver.add(showArrow, {param: 3});
+            textAttack4.events.onInputOver.add(showArrow, {param: 4});
+
+            textAttack.events.onInputOut.add(hideArrow, {param: 1});
+            textAttack2.events.onInputOut.add(hideArrow, {param: 2});
+            textAttack3.events.onInputOut.add(hideArrow, {param: 3});
+            textAttack4.events.onInputOut.add(hideArrow, {param: 4});
+
         }, 2000);
 
         textTrumpHP = game.add.text(70, 140, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
@@ -110,7 +123,10 @@ window.onload = function() {
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
-        arrow = game.add.image(65, 385, 'arrow');
+        arrow = game.add.image(95, 393, 'arrow');
+        arrow2 = game.add.image(95, 433, 'arrow');
+        arrow3 = game.add.image(340, 393, 'arrow');
+        arrow4 = game.add.image(340, 433, 'arrow');
         trump = game.add.image(50, y, 'trump');
         opponentSpriteValue = "mexican";
         opponent = game.add.sprite(480, y, opponentSpriteValue);
@@ -120,6 +136,13 @@ window.onload = function() {
         trump.scale.set(0.4);
         opponent.scale.set(2);
         arrow.scale.set(0.1);
+        arrow2.scale.set(0.1);
+        arrow3.scale.set(0.1);
+        arrow4.scale.set(0.1);
+        arrow.visible = false;
+        arrow2.visible = false;
+        arrow3.visible = false;
+        arrow4.visible = false;
 
     }
 
@@ -223,6 +246,42 @@ window.onload = function() {
 
     function victory() {
         window.location = "victory.html#clip";
+    }
+
+    function showArrow() {
+        if(this.param == 1) {
+            arrow.visible = true;
+        }
+
+        if(this.param == 2) {
+            arrow3.visible = true;
+        }
+
+        if(this.param == 3) {
+            arrow2.visible = true;
+        }
+
+        if(this.param == 4) {
+            arrow4.visible = true;
+        }
+    }
+
+    function hideArrow() {
+        if(this.param == 1) {
+            arrow.visible = false;
+        }
+
+        if(this.param == 2) {
+            arrow3.visible = false;
+        }
+
+        if(this.param == 3) {
+            arrow2.visible = false;
+        }
+
+        if(this.param == 4) {
+            arrow4.visible = false;
+        }
     }
 
     function loadStart() {
