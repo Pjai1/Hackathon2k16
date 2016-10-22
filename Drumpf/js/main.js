@@ -81,11 +81,11 @@ window.onload = function() {
             infoText = game.add.text(10, 10, "DEFEAT YOUR ENEMY!", { fill: '#000', fontSize: '24px' });
             infoTextAttacks = game.add.text(10, 350, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px' })
 
-            textAttack = game.add.text(120, 395, 'Pay Wall', { fill: '#283681', fontSize: '18px' });
+            textAttack = game.add.text(120, 395, 'Make them pay', { fill: '#283681', fontSize: '18px' });
             // textAttack.setAttribute('value', textAttack);
-            textAttack2 = game.add.text(360, 395, 'Beat Them At Border', { fill: '#283681', fontSize: '18px' });
-            textAttack3 = game.add.text(120, 435, "Build Wall", { fill: '#283681', fontSize: '18px' });
-            textAttack4 = game.add.text(360, 435, 'TrumpNation', { fill: '#283681', fontSize: '18px' });
+            textAttack2 = game.add.text(360, 395, 'Border beatdown', { fill: '#283681', fontSize: '18px' });
+            textAttack3 = game.add.text(120, 435, "Build wall", { fill: '#283681', fontSize: '18px' });
+            textAttack4 = game.add.text(360, 435, 'Rant', { fill: '#283681', fontSize: '18px' });
 
             textAttack.inputEnabled = true;
             textAttack.input.useHandCursor = true;
@@ -106,19 +106,19 @@ window.onload = function() {
         textTrumpHP = game.add.text(70, 140, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
-        textOpponentHP = game.add.text(520, 150, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
+        textOpponentHP = game.add.text(500, 175, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
         arrow = game.add.image(65, 385, 'arrow');
         trump = game.add.image(50, y, 'trump');
         opponentSpriteValue = "mexican";
-        opponent = game.add.sprite(520, y, opponentSpriteValue);
+        opponent = game.add.sprite(480, y, opponentSpriteValue);
         var opponentTween = game.add.tween(opponent);
         opponentTween.to({ y: 50 }, 2000, 'Linear', true, 0);
 
         trump.scale.set(0.4);
-        opponent.scale.set(1.5);
+        opponent.scale.set(2);
         arrow.scale.set(0.1);
 
     }
