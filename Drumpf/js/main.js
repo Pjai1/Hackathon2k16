@@ -52,6 +52,7 @@ window.onload = function() {
     var textAttack2;
     var textAttack3;
     var textAttack4;
+    var transText;
     var textTrumpHP;
     var textOpponentHP;
     var victoryBtn;
@@ -103,6 +104,8 @@ window.onload = function() {
             textAttack2 = game.add.text(360, 395, 'Border beatdown', { fill: '#283681', fontSize: '18px' });
             textAttack3 = game.add.text(120, 435, "Build wall", { fill: '#283681', fontSize: '18px' });
             textAttack4 = game.add.text(360, 435, 'Rant', { fill: '#283681', fontSize: '18px' });
+            transText = game.add.text(180, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '18px' });
+            transText.visible = false;
 
             textAttack.inputEnabled = true;
             textAttack.input.useHandCursor = true;
@@ -208,34 +211,86 @@ window.onload = function() {
         if(opponentHealth == 0) {
             if(opponentSpriteValue == "hilary") {
                 console.log("hilary");
-                game.world.removeAll();
-                victory();
+                transText.setText("You have defeated " + opponentSpriteValue);
+                textTrumpHP.visible = false;
+                textOpponentHP.visible = false;
+                textAttack.visible = false;
+                textAttack2.visible = false;
+                textAttack3.visible = false;
+                textAttack4.visible = false;
+                setTimeout(function() {
+                    game.world.removeAll();
+                    victory();
+                }, 2000);
             }
 
             if(opponentSpriteValue == "woman") {
+                opponentSpriteValue = "women";
+                transText.setText("You have defeated the " + opponentSpriteValue);
                 opponentSpriteValue = "hilary";
                 levelStr = "hil";
                 opponentHealth = 5;
-                opponent.loadTexture("hilary");
-                bgMusic.stop();
-                bossMusic = game.add.audio("boss_music");
-                bossMusic.volume = 0.05;
-                bossMusic.play();
-                textOpponentHP.setText("HP: " + opponentHealth + "/5");
-                textAttack.setText("Make Her Bleed");
-                textAttack2.setText("Maledict Her");
-                textAttack3.setText("Shut Her Up");
+                transText.visible = true;
+                trump.visible = false;
+                opponent.visible = false;
+                textTrumpHP.visible = false;
+                textOpponentHP.visible = false;
+                textAttack.visible = false;
+                textAttack2.visible = false;
+                textAttack3.visible = false;
+                textAttack4.visible = false;
+                setTimeout(function() {
+                    transText.visible = false;
+                    trump.visible = true;
+                    opponent.visible = true;
+                    textTrumpHP.visible = true;
+                    textOpponentHP.visible = true;
+                    textAttack.visible = true;
+                    textAttack2.visible = true;
+                    textAttack3.visible = true;
+                    textAttack4.visible = true;
+                    opponent.loadTexture("hilary");
+                    bgMusic.stop();
+                    bossMusic = game.add.audio("boss_music");
+                    bossMusic.volume = 0.05;
+                    bossMusic.play();
+                    textOpponentHP.setText("HP: " + opponentHealth + "/5");
+                    textAttack.setText("Make Her Bleed");
+                    textAttack2.setText("Maledict Her");
+                    textAttack3.setText("Shut Her Up");
+                }, 2000);
             }
 
             if(opponentSpriteValue == "mexican") {
+                transText.setText("You have defeated the " + opponentSpriteValue + "s");
                 opponentSpriteValue = "woman";
                 levelStr = "wom";
                 opponentHealth = 5;
-                opponent.loadTexture("woman");
-                textOpponentHP.setText("HP: " + opponentHealth + "/5");
-                textAttack.setText("Grab Her Pussay");
-                textAttack2.setText("Respect Her");
-                textAttack3.setText("Nasty Woman");
+                transText.visible = true;
+                trump.visible = false;
+                opponent.visible = false;
+                textTrumpHP.visible = false;
+                textOpponentHP.visible = false;
+                textAttack.visible = false;
+                textAttack2.visible = false;
+                textAttack3.visible = false;
+                textAttack4.visible = false;
+                setTimeout(function() {
+                    transText.visible = false;
+                    trump.visible = true;
+                    opponent.visible = true;
+                    textTrumpHP.visible = true;
+                    textOpponentHP.visible = true;
+                    textAttack.visible = true;
+                    textAttack2.visible = true;
+                    textAttack3.visible = true;
+                    textAttack4.visible = true;
+                    opponent.loadTexture("woman");
+                    textOpponentHP.setText("HP: " + opponentHealth + "/5");
+                    textAttack.setText("Grab Her Pussay");
+                    textAttack2.setText("Respect Her");
+                    textAttack3.setText("Nasty Woman");
+                }, 2000);
             }
             // game.world.removeAll();
             // victory();
