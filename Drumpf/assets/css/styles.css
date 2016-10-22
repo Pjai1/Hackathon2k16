@@ -85,3 +85,11 @@ canvas {
     display: block;
     margin: 0 auto;
 }
+
+#skipLink {
+    width: 150px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    text-decoration: underline;
+}
