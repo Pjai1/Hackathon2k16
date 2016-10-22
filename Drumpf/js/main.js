@@ -98,15 +98,15 @@ window.onload = function() {
             graphics.drawEllipse(515, 155, 60, 15);
             graphics.endFill();   
 
-            infoText = game.add.text(10, 10, "DEFEAT THE MEXICANS!", { fill: '#000', fontSize: '24px', font: "Open Sans", fontWeight: 500 });
-            infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px', font: "Open Sans", fontWeight: 500 })
+            infoText = game.add.text(10, 10, "DEFEAT THE MEXICANS!", { fill: '#000', fontSize: '24px', font: "monospace", fontWeight: 500 });
+            infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px', font: "monospace", fontWeight: 500 })
 
             textAttack = game.add.text(120, 395, 'MAKE THEM PAY', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
             // textAttack.setAttribute('value', textAttack);
             textAttack2 = game.add.text(360, 395, 'BORDER BEATDOWN', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
             textAttack3 = game.add.text(120, 435, "BUILD WALL", { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
             textAttack4 = game.add.text(360, 435, 'RANT', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
-            transText = game.add.text(150, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '24px', font: "Open Sans", fontWeight: 500   });
+            transText = game.add.text(150, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '24px', font: "monospace", fontWeight: 500   });
             transText.visible = false;
 
             textAttack.inputEnabled = true;
