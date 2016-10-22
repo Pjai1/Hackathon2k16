@@ -4,10 +4,6 @@ window.onload = function() {
 
     function preload () {
 
-        // game.load.image('logo', 'assets/images/160716123606-trump-pence-new-logo-large-169.jpg');
-        // game.load.image('button', 'assets/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
-        // game.load.image('background', 'css/images/FLA20121022316_md.jpg');
-
         game.load.image('trump', 'assets/trumpGif.gif');
         game.load.image('woman', 'assets/womanGif.gif');
         game.load.image('hilary', 'assets/hillaryGif.gif');
@@ -29,11 +25,15 @@ window.onload = function() {
         game.load.audio('rnd1', 'assets/audio/FreeTradeCanBeWonderFullIfYouHaveSmartPeopleButWeHavePeopleWhoAreStupid.mp3');
         game.load.audio('rnd2', 'assets/audio/HeIsAWarHeroCauseHeGotCaptured.mp3');
         game.load.audio('rnd3', 'assets/audio/IAmANicePerson.mp3');
+        game.load.audio('rnd4', 'assets/audio/IBeatChinaAllTheTime.mp3');
+        game.load.audio('rnd5', 'assets/audio/IAmOfficiallyRunning.mp3');
+        game.load.audio('rnd6', 'assets/audio/ILikeChina.mp3');
+        game.load.audio('rnd7', 'assets/audio/IHaveHadTremendousSuccess.mp3');
+        game.load.audio('rnd8', 'assets/audio/IfIvakaWerntMyDoughterPerhapsIdBeDatingHer.mp3');
+        game.load.audio('rnd9', 'assets/audio/IDontNeedAnybodiesMoneyImReallyRitch.mp3');
 
         game.load.audio('boss_music', 'assets/audio/boss_music.mp3');
         game.load.audio('bg_music', 'assets/audio/bg_music.mp3')
-        // game.load.audio('arab', []);
-        // game.load.audio('woman', []);
 
     }
 
@@ -48,6 +48,7 @@ window.onload = function() {
     var arrow2;
     var arrow3;
     var arrow4;
+    var rndText;
     var textAttack;
     var textAttack2;
     var textAttack3;
@@ -101,6 +102,7 @@ window.onload = function() {
             infoText = game.add.text(10, 10, "DEFEAT THE MEXICANS!", { fill: '#000', fontSize: '24px', font: "monospace", fontWeight: 500 });
             infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px', font: "monospace", fontWeight: 500 })
 
+            rndText = game.add.text(250,200, "Not Effective...");
             textAttack = game.add.text(120, 395, 'MAKE THEM PAY', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
             // textAttack.setAttribute('value', textAttack);
             textAttack2 = game.add.text(360, 395, 'BORDER BEATDOWN', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
@@ -108,6 +110,7 @@ window.onload = function() {
             textAttack4 = game.add.text(360, 435, 'RANT', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
             transText = game.add.text(150, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '24px', font: "monospace", fontWeight: 500   });
             transText.visible = false;
+            rndText.visible = false;
 
             textAttack.inputEnabled = true;
             textAttack.input.useHandCursor = true;
@@ -189,12 +192,14 @@ window.onload = function() {
     function startAttack(e) {
 
         soundParam = this.param;
-        rnd = Math.ceil(Math.random()*3);
+        rnd = Math.ceil(Math.random()*9);
         click++;
         console.log(soundParam);
 
         if(soundParam < 4) {
             // e.z-=4;
+            opponentHealth--;
+            textOpponentHP.setText("HP: " + opponentHealth + "/5");
             music = game.add.audio(levelStr + soundParam);
 
             music.play();
@@ -202,13 +207,17 @@ window.onload = function() {
         else {
             music = game.add.audio(rndStr + rnd);
 
-            music.play();           
+            music.play();  
+            rndText.visible = true;
+            setTimeout(function() {
+                rndText.visible = false;
+            }, 1000);
         }
 
-        if(opponentHealth != 0) {
-            opponentHealth--;
-            textOpponentHP.setText("HP: " + opponentHealth + "/5");
-        }
+        // if(opponentHealth != 0) {
+        //     opponentHealth--;
+        //     textOpponentHP.setText("HP: " + opponentHealth + "/5");
+        // }
 
         if(opponentHealth == 0) {
             if(opponentSpriteValue == "hilary") {
@@ -296,8 +305,6 @@ window.onload = function() {
                     textAttack3.setText("INSULT");
                 }, 2000);
             }
-            // game.world.removeAll();
-            // victory();
         }
 
         var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
