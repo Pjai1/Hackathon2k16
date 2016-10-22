@@ -60,7 +60,7 @@ window.onload = function() {
     var background;
     var trump;
     var trumpHealth = 10;
-    var opponentHealth = 5;
+    var opponentHealth = 4;
     var opponent;
     var click = 0;
     var x;
@@ -102,7 +102,7 @@ window.onload = function() {
             infoText = game.add.text(10, 10, "DEFEAT THE MEXICANS!", { fill: '#000', fontSize: '24px', font: "monospace", fontWeight: 500 });
             infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px', font: "monospace", fontWeight: 500 })
 
-            rndText = game.add.text(250,200, "Not Effective...");
+            rndText = game.add.text(250,200, "Not Effective...", { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500  });
             textAttack = game.add.text(120, 395, 'MAKE THEM PAY', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
             // textAttack.setAttribute('value', textAttack);
             textAttack2 = game.add.text(360, 395, 'BORDER BEATDOWN', { fill: '#283681', fontSize: '18px', font: "monospace", fontWeight: 500   });
@@ -141,7 +141,7 @@ window.onload = function() {
         textTrumpHP = game.add.text(70, 120, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px', font: "Open Sans", fontWeight: 500 });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
-        textOpponentHP = game.add.text(480, 185, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px', font: "Open Sans", fontWeight: 500  });
+        textOpponentHP = game.add.text(480, 185, "HP: " + opponentHealth + "/4", { fill: '#8A171C', fontSize: '18px', font: "Open Sans", fontWeight: 500  });
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
@@ -199,7 +199,13 @@ window.onload = function() {
         if(soundParam < 4) {
             // e.z-=4;
             opponentHealth--;
-            textOpponentHP.setText("HP: " + opponentHealth + "/5");
+
+            if(opponentSpriteValue == "hilary") {
+                textOpponentHP.setText("HP: " + opponentHealth + "/5");
+            }
+            else {
+                textOpponentHP.setText("HP: " + opponentHealth + "/4");
+            }
             music = game.add.audio(levelStr + soundParam);
 
             music.play();
@@ -277,7 +283,7 @@ window.onload = function() {
                 transText.setText("The women are approaching!");
                 opponentSpriteValue = "woman";
                 levelStr = "wom";
-                opponentHealth = 5;
+                opponentHealth = 4;
                 transText.visible = true;
                 trump.visible = false;
                 opponent.visible = false;
@@ -299,7 +305,7 @@ window.onload = function() {
                     textAttack3.visible = true;
                     textAttack4.visible = true;
                     opponent.loadTexture("woman");
-                    textOpponentHP.setText("HP: " + opponentHealth + "/5");
+                    textOpponentHP.setText("HP: " + opponentHealth + "/4");
                     textAttack.setText("SEXISM");
                     textAttack2.setText("RESPECT");
                     textAttack3.setText("INSULT");
