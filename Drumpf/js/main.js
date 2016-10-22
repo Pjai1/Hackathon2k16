@@ -8,7 +8,7 @@ window.onload = function() {
         // game.load.image('button', 'assets/images/pressing-start-and-the-games-that-never-stop_f5qb.jpg');
         // game.load.image('background', 'css/images/FLA20121022316_md.jpg');
 
-        game.load.image('trump', 'assets/trumpHead.png');
+        game.load.image('trump', 'assets/trumpGif.gif');
         game.load.image('woman', 'assets/womanGif.gif');
         game.load.image('hilary', 'assets/hillaryGif.gif');
         game.load.image('mexican', 'assets/mexicanGif.gif');
@@ -30,12 +30,14 @@ window.onload = function() {
         game.load.audio('rnd2', 'assets/audio/HeIsAWarHeroCauseHeGotCaptured.mp3');
         game.load.audio('rnd3', 'assets/audio/IAmANicePerson.mp3');
 
+        game.load.audio('boss_music', 'assets/audio/boss_music.mp3');
         game.load.audio('bg_music', 'assets/audio/bg_music.mp3')
         // game.load.audio('arab', []);
         // game.load.audio('woman', []);
 
     }
 
+    var bgMusic, bossMusic;
     var levelStr = "mex";
     var rndStr = "rnd";
     var soundParam;
@@ -65,7 +67,7 @@ window.onload = function() {
 
     function create () {
                 
-        var bgMusic = game.add.audio("bg_music")
+        bgMusic = game.add.audio("bg_music")
         bgMusic.volume = 0.05;
         bgMusic.play();
         
@@ -119,7 +121,7 @@ window.onload = function() {
         textTrumpHP = game.add.text(70, 140, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
-        textOpponentHP = game.add.text(500, 175, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
+        textOpponentHP = game.add.text(500, 185, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
@@ -133,7 +135,7 @@ window.onload = function() {
         var opponentTween = game.add.tween(opponent);
         opponentTween.to({ y: 50 }, 2000, 'Linear', true, 0);
 
-        trump.scale.set(0.4);
+        trump.scale.set(2.75);
         opponent.scale.set(2);
         arrow.scale.set(0.1);
         arrow2.scale.set(0.1);
@@ -204,6 +206,10 @@ window.onload = function() {
                 levelStr = "hil";
                 opponentHealth = 5;
                 opponent.loadTexture("hilary");
+                bgMusic.stop();
+                bossMusic = game.add.audio("boss_music");
+                bossMusic.volume = 0.05;
+                bossMusic.play();
                 textOpponentHP.setText("HP: " + opponentHealth + "/5");
                 textAttack.setText("Make Her Bleed");
                 textAttack2.setText("Maledict Her");
@@ -227,7 +233,7 @@ window.onload = function() {
         var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
 
         setTimeout(function() {
-            var opponentTween = game.add.tween(opponent).to({ x: 600}, 150, 'Linear').to({ x: 520}, 500, 'Linear').start();
+            var opponentTween = game.add.tween(opponent).to({ x: 600}, 150, 'Linear').to({ x: 480}, 500, 'Linear').start();
         }, 130);
 
         textAttack.events.onInputDown.removeAll();
