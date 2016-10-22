@@ -10,6 +10,8 @@ window.onload = function() {
         game.load.image('mexican', 'assets/mexicanGif.gif');
         game.load.image('arrow', 'assets/images/arrow.gif');
 
+        game.load.audio('Punch', 'assets/audio/punch.mp3');
+
         game.load.audio('mex1', 'assets/audio/AndMexicoWillPayForTheWall.mp3');
         game.load.audio('mex2', 'assets/audio/WhenDoWeBeatMexicoAtTheBorder.mp3');
         game.load.audio('mex3', 'assets/audio/IWouldBuildAGreatWall.mp3');
@@ -191,10 +193,17 @@ window.onload = function() {
 
     function startAttack(e) {
 
+        punch = game.add.audio("Punch");
+        punch.volume = 0.5;
+
+        setTimeout(function(){
+            punch.play();
+        }, 175);
+
         soundParam = this.param;
         rnd = Math.ceil(Math.random()*9);
         click++;
-        console.log(soundParam);
+        
 
         if(soundParam < 4) {
             // e.z-=4;
