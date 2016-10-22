@@ -30,6 +30,7 @@ window.onload = function() {
         game.load.audio('rnd2', 'assets/audio/HeIsAWarHeroCauseHeGotCaptured.mp3');
         game.load.audio('rnd3', 'assets/audio/IAmANicePerson.mp3');
 
+        game.load.audio('bg_music', 'assets/audio/bg_music.mp3')
         // game.load.audio('arab', []);
         // game.load.audio('woman', []);
 
@@ -60,7 +61,11 @@ window.onload = function() {
     var p = document.querySelector("p");
 
     function create () {
-
+                
+        var bgMusic = game.add.audio("bg_music")
+        bgMusic.volume = 0.05;
+        bgMusic.play();
+        
         game.stage.backgroundColor = "#fff";
         // victId.style.visibility = "hidden";
 
@@ -73,7 +78,7 @@ window.onload = function() {
             graphics.lineStyle(5, "0x283681", 1);
             graphics.drawRect(10, -600, 610, 90);
 
-            infoText = game.add.text(20, 20, "DEFEAT YOUR ENEMY!", { fill: '#000', fontSize: '24px' });
+            infoText = game.add.text(10, 10, "DEFEAT YOUR ENEMY!", { fill: '#000', fontSize: '24px' });
             infoTextAttacks = game.add.text(10, 350, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px' })
 
             textAttack = game.add.text(120, 395, 'Pay Wall', { fill: '#283681', fontSize: '18px' });
