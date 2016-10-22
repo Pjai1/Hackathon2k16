@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    var game = new Phaser.Game(640, 480, Phaser.AUTO, '', { preload: preload, create: create, render: render, update: update });
+    var game = new Phaser.Game(632, 480, Phaser.AUTO, "game", { preload: preload, create: create, render: render, update: update });
 
     function preload () {
 
@@ -68,19 +68,23 @@ window.onload = function() {
 
         setTimeout(function() {
 
-            graphics.lineStyle(10, 000, 1);
-            graphics.drawRect(0, -605, 640, 100);
+            graphics.lineStyle(5, "0x283681", 1);
+            graphics.drawRect(10, -600, 610, 90);
 
-            textAttack = game.add.text(100, 390, 'Pay Wall', { fill: '#000', fontSize: '18px' });
+            textAttack = game.add.text(120, 395, 'Pay Wall', { fill: '#283681', fontSize: '18px' });
             // textAttack.setAttribute('value', textAttack);
-            textAttack2 = game.add.text(380, 390, 'Beat Them At Border', { fill: '#000', fontSize: '18px' });
-            textAttack3 = game.add.text(100, 440, "Build Wall", { fill: '#000', fontSize: '18px' });
-            textAttack4 = game.add.text(380, 440, 'TrumpNation', { fill: '#000', fontSize: '18px' });
+            textAttack2 = game.add.text(360, 395, 'Beat Them At Border', { fill: '#283681', fontSize: '18px' });
+            textAttack3 = game.add.text(120, 435, "Build Wall", { fill: '#283681', fontSize: '18px' });
+            textAttack4 = game.add.text(360, 435, 'TrumpNation', { fill: '#283681', fontSize: '18px' });
 
             textAttack.inputEnabled = true;
+            textAttack.input.useHandCursor = true;
             textAttack2.inputEnabled = true;
+            textAttack2.input.useHandCursor = true;
             textAttack3.inputEnabled = true;
+            textAttack3.input.useHandCursor = true;
             textAttack4.inputEnabled = true;
+            textAttack4.input.useHandCursor = true;
 
             textAttack.events.onInputDown.add(startAttack, {param: 1});
             textAttack2.events.onInputDown.add(startAttack, {param: 2});
@@ -89,10 +93,10 @@ window.onload = function() {
 
         }, 2000);
 
-        textTrumpHP = game.add.text(70, 160, "HP: " + trumpHealth + "/10", { fill: '#000', fontSize: '18px' });
+        textTrumpHP = game.add.text(70, 160, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
-        textOpponentHP = game.add.text(520, 150, "HP: " + opponentHealth + "/5", { fill: '#000', fontSize: '18px' });
+        textOpponentHP = game.add.text(520, 150, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 

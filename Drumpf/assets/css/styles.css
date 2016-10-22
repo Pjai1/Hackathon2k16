@@ -1,6 +1,6 @@
 main {
-    margin-top: 50px;
-    width: 800px;
+    margin-top: 20px;
+    width: 640px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -23,8 +23,8 @@ nav {
     background-image: url(../images/logo.gif);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 800px;
-    height: 300px;
+    width: 640px;
+    height: 240px;
 }
 
 ul {
@@ -75,11 +75,6 @@ section {
     text-align: center;
 }
 
-canvas {
-	display: block;   
-	margin: 0 auto;
-}
-
 .video-wrapper {
     width: 720px;
     display: block;
@@ -92,4 +87,8 @@ canvas {
     display: block;
     margin: 0 auto;
     text-decoration: underline;
+}
+
+canvas {
+    border: 4px solid #8A171C;
 }
