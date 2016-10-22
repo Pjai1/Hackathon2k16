@@ -226,7 +226,7 @@ window.onload = function() {
 
             if(opponentSpriteValue == "woman") {
                 opponentSpriteValue = "women";
-                transText.setText("You have defeated the " + opponentSpriteValue + "!");
+                transText.setText("This is it! Hillary the endboss!");
                 opponentSpriteValue = "hilary";
                 levelStr = "hil";
                 opponentHealth = 5;
@@ -263,7 +263,7 @@ window.onload = function() {
             }
 
             if(opponentSpriteValue == "mexican") {
-                transText.setText("You have defeated the " + opponentSpriteValue + "s" + "!");
+                transText.setText("The women are approaching!");
                 opponentSpriteValue = "woman";
                 levelStr = "wom";
                 opponentHealth = 5;
