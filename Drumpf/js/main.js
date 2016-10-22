@@ -57,7 +57,7 @@ window.onload = function() {
     function create () {
 
         game.stage.backgroundColor = "#fff";
-        victId.style.visibility = "hidden";
+        // victId.style.visibility = "hidden";
 
         graphics = game.add.graphics(0, 980);
 
@@ -124,7 +124,7 @@ window.onload = function() {
 
         rnd = Math.ceil(Math.random()*3);
         click++;
-        console.log(victId);
+        // console.log(victId);
 
         if(e.z < 4) {
             music = game.add.audio(levelStr + e.z);
