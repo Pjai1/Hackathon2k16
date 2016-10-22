@@ -92,7 +92,7 @@ window.onload = function() {
             // Opponent shadow
             graphics.lineStyle(5, 0x8A171C, 0.8);
             graphics.beginFill(0x000, 0.1);
-            graphics.drawEllipse(535, 155, 60, 15);
+            graphics.drawEllipse(515, 155, 60, 15);
             graphics.endFill();   
 
             infoText = game.add.text(10, 10, "DEFEAT YOUR ENEMY!", { fill: '#000', fontSize: '24px' });
@@ -133,7 +133,7 @@ window.onload = function() {
         textTrumpHP = game.add.text(70, 120, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
-        textOpponentHP = game.add.text(500, 185, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
+        textOpponentHP = game.add.text(480, 185, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
 
@@ -143,7 +143,7 @@ window.onload = function() {
         arrow4 = game.add.image(340, 433, 'arrow');
         trump = game.add.image(50, y, 'trump');
         opponentSpriteValue = "mexican";
-        opponent = game.add.sprite(480, y, opponentSpriteValue);
+        opponent = game.add.sprite(460, y, opponentSpriteValue);
         var opponentTween = game.add.tween(opponent);
         opponentTween.to({ y: 50 }, 2000, 'Linear', true, 0);
 
@@ -244,7 +244,7 @@ window.onload = function() {
         var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
 
         setTimeout(function() {
-            var opponentTween = game.add.tween(opponent).to({ x: 600}, 150, 'Linear').to({ x: 480}, 500, 'Linear').start();
+            var opponentTween = game.add.tween(opponent).to({ x: 560}, 150, 'Linear').to({ x: 460}, 500, 'Linear').start();
         }, 130);
 
         textAttack.events.onInputDown.removeAll();
