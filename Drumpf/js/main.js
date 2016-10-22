@@ -96,15 +96,15 @@ window.onload = function() {
             graphics.drawEllipse(515, 155, 60, 15);
             graphics.endFill();   
 
-            infoText = game.add.text(10, 10, "DEFEAT YOUR ENEMY!", { fill: '#000', fontSize: '24px' });
-            infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px' })
+            infoText = game.add.text(10, 10, "DEFEAT THE MEXICANS!", { fill: '#000', fontSize: '24px' });
+            infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px', underline: "underline" })
 
             textAttack = game.add.text(120, 395, 'Make them pay', { fill: '#283681', fontSize: '18px' });
             // textAttack.setAttribute('value', textAttack);
             textAttack2 = game.add.text(360, 395, 'Border beatdown', { fill: '#283681', fontSize: '18px' });
             textAttack3 = game.add.text(120, 435, "Build wall", { fill: '#283681', fontSize: '18px' });
             textAttack4 = game.add.text(360, 435, 'Rant', { fill: '#283681', fontSize: '18px' });
-            transText = game.add.text(180, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '18px' });
+            transText = game.add.text(150, 200, "You have defeated " + opponentSpriteValue, { fill: '#283681', fontSize: '24px' });
             transText.visible = false;
 
             textAttack.inputEnabled = true;
@@ -151,7 +151,7 @@ window.onload = function() {
         opponentTween.to({ y: 50 }, 2000, 'Linear', true, 0);
 
         trump.scale.set(2.75);
-        opponent.scale.set(2);
+        opponent.scale.set(1.8);
         arrow.scale.set(0.1);
         arrow2.scale.set(0.1);
         arrow3.scale.set(0.1);
@@ -211,7 +211,7 @@ window.onload = function() {
         if(opponentHealth == 0) {
             if(opponentSpriteValue == "hilary") {
                 console.log("hilary");
-                transText.setText("You have defeated " + opponentSpriteValue);
+                transText.setText("You have defeated " + opponentSpriteValue + "!");
                 textTrumpHP.visible = false;
                 textOpponentHP.visible = false;
                 textAttack.visible = false;
@@ -226,7 +226,7 @@ window.onload = function() {
 
             if(opponentSpriteValue == "woman") {
                 opponentSpriteValue = "women";
-                transText.setText("You have defeated the " + opponentSpriteValue);
+                transText.setText("You have defeated the " + opponentSpriteValue + "!");
                 opponentSpriteValue = "hilary";
                 levelStr = "hil";
                 opponentHealth = 5;
@@ -240,6 +240,7 @@ window.onload = function() {
                 textAttack3.visible = false;
                 textAttack4.visible = false;
                 setTimeout(function() {
+                    infoText.setText("DEFEAT HILLARY!");
                     transText.visible = false;
                     trump.visible = true;
                     opponent.visible = true;
@@ -262,7 +263,7 @@ window.onload = function() {
             }
 
             if(opponentSpriteValue == "mexican") {
-                transText.setText("You have defeated the " + opponentSpriteValue + "s");
+                transText.setText("You have defeated the " + opponentSpriteValue + "s" + "!");
                 opponentSpriteValue = "woman";
                 levelStr = "wom";
                 opponentHealth = 5;
@@ -276,6 +277,7 @@ window.onload = function() {
                 textAttack3.visible = false;
                 textAttack4.visible = false;
                 setTimeout(function() {
+                    infoText.setText("DEFEAT THE WOMEN!");
                     transText.visible = false;
                     trump.visible = true;
                     opponent.visible = true;
