@@ -62,7 +62,7 @@ window.onload = function() {
     var opponent;
     var click = 0;
     var x;
-    var y = 180;
+    var y = 160;
     var p = document.querySelector("p");
 
     function create () {
@@ -74,17 +74,29 @@ window.onload = function() {
         game.stage.backgroundColor = "#fff";
         // victId.style.visibility = "hidden";
 
-        graphics = game.add.graphics(0, 980);
+        graphics = game.add.graphics(0, 0);
 
         game.load.onLoadStart.add(loadStart, this);
 
         setTimeout(function() {
+            
+            graphics.lineStyle(5, 0x283681, 1);
+            graphics.drawRect(10, 380, 610, 90);
 
-            graphics.lineStyle(5, "0x283681", 1);
-            graphics.drawRect(10, -600, 610, 90);
+            // Trump shadow
+            graphics.lineStyle(5, 0x283681, 0.8);
+            graphics.beginFill(0x000, 0.1);
+            graphics.drawEllipse(110, 305, 80, 25);
+            graphics.endFill();            
+
+            // Opponent shadow
+            graphics.lineStyle(5, 0x8A171C, 0.8);
+            graphics.beginFill(0x000, 0.1);
+            graphics.drawEllipse(535, 155, 60, 15);
+            graphics.endFill();   
 
             infoText = game.add.text(10, 10, "DEFEAT YOUR ENEMY!", { fill: '#000', fontSize: '24px' });
-            infoTextAttacks = game.add.text(10, 350, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px' })
+            infoTextAttacks = game.add.text(10, 355, "CHOOSE YOUR ATTACK", { fill: '#000', fontSize: '18px' })
 
             textAttack = game.add.text(120, 395, 'Make them pay', { fill: '#283681', fontSize: '18px' });
             // textAttack.setAttribute('value', textAttack);
@@ -118,7 +130,7 @@ window.onload = function() {
 
         }, 2000);
 
-        textTrumpHP = game.add.text(70, 140, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
+        textTrumpHP = game.add.text(70, 120, "HP: " + trumpHealth + "/10", { fill: '#283681', fontSize: '18px' });
         textTrumpHP.visible = false;
         game.add.tween(textTrumpHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
         textOpponentHP = game.add.text(500, 185, "HP: " + opponentHealth + "/5", { fill: '#8A171C', fontSize: '18px' });
