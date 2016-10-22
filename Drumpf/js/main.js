@@ -152,7 +152,6 @@ window.onload = function() {
 
         game.load.start();
 
-        button.visible = false;
 
     }
 
