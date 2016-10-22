@@ -63,13 +63,28 @@ window.onload = function() {
 
         game.load.onLoadStart.add(loadStart, this);
 
-        graphics.lineStyle(10, 000, 1);
-        graphics.drawRect(0, -605, 640, 100);
+        setTimeout(function() {
 
-        textAttack = game.add.text(100, 390, 'Pay For Wall', { fill: '#000', fontSize: '18px' });
-        textAttack2 = game.add.text(380, 390, 'Beat Them At Border', { fill: '#000', fontSize: '18px' });
-        textAttack3 = game.add.text(100, 440, "Wall'em", { fill: '#000', fontSize: '18px' });
-        textAttack4 = game.add.text(380, 440, 'TrumpNation', { fill: '#000', fontSize: '18px' });
+            graphics.lineStyle(10, 000, 1);
+            graphics.drawRect(0, -605, 640, 100);
+
+            textAttack = game.add.text(100, 390, 'Pay Wall', { fill: '#000', fontSize: '18px' });
+            // textAttack.setAttribute('value', textAttack);
+            textAttack2 = game.add.text(380, 390, 'Beat Them At Border', { fill: '#000', fontSize: '18px' });
+            textAttack3 = game.add.text(100, 440, "Build Wall", { fill: '#000', fontSize: '18px' });
+            textAttack4 = game.add.text(380, 440, 'TrumpNation', { fill: '#000', fontSize: '18px' });
+
+            textAttack.inputEnabled = true;
+            textAttack2.inputEnabled = true;
+            textAttack3.inputEnabled = true;
+            textAttack4.inputEnabled = true;
+
+            textAttack.events.onInputDown.add(startAttack, {param: 1});
+            textAttack2.events.onInputDown.add(startAttack, {param: 2});
+            textAttack3.events.onInputDown.add(startAttack, {param: 3});
+            textAttack4.events.onInputDown.add(startAttack, {param: 4});
+
+        }, 2000);
 
         textTrumpHP = game.add.text(70, 160, "HP: " + trumpHealth + "/10", { fill: '#000', fontSize: '18px' });
         textTrumpHP.visible = false;
@@ -77,16 +92,6 @@ window.onload = function() {
         textOpponentHP = game.add.text(520, 150, "HP: " + opponentHealth + "/5", { fill: '#000', fontSize: '18px' });
         textOpponentHP.visible = false;
         game.add.tween(textOpponentHP).to({visible: true}, 1500, Phaser.Easing.Default, true, 2000);
-
-        textAttack.inputEnabled = true;
-        textAttack2.inputEnabled = true;
-        textAttack3.inputEnabled = true;
-        textAttack4.inputEnabled = true;
-
-        textAttack.events.onInputDown.add(startAttack, this);
-        textAttack2.events.onInputDown.add(startAttack, this);
-        textAttack3.events.onInputDown.add(startAttack, this);
-        textAttack4.events.onInputDown.add(startAttack, this);
 
         trump = game.add.image(50, y, 'trump');
         opponent = game.add.sprite(520, y, 'mexican');
@@ -124,9 +129,10 @@ window.onload = function() {
 
         rnd = Math.ceil(Math.random()*3);
         click++;
-        // console.log(victId);
+        console.log(this.param);
 
-        if(e.z < 4) {
+        if(e.z < 8) {
+            e.z-=4;
             music = game.add.audio(levelStr + e.z);
 
             music.play();
@@ -149,6 +155,22 @@ window.onload = function() {
         }
 
         var trumpTween = game.add.tween(trump).to({ x: 450 }, 150, 'Linear').to({ x: 50 }, 1500, 'Linear').start();
+
+        setTimeout(function() {
+            var opponentTween = game.add.tween(opponent).to({ x: 600}, 150, 'Linear').to({ x: 520}, 500, 'Linear').start();
+        }, 130);
+
+        textAttack.events.onInputDown.removeAll();
+        textAttack2.events.onInputDown.removeAll();
+        textAttack3.events.onInputDown.removeAll();
+        textAttack4.events.onInputDown.removeAll();
+
+        setTimeout(function() {
+            textAttack.events.onInputDown.add(startAttack, {param: 1});
+            textAttack2.events.onInputDown.add(startAttack, {param: 2});
+            textAttack3.events.onInputDown.add(startAttack, {param: 3});
+            textAttack4.events.onInputDown.add(startAttack, {param: 4});
+        }, 2000);
 
     }
 
