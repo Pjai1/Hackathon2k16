@@ -4,13 +4,13 @@ window.onload = function() {
 
     function preload () {
 
-        game.load.image('trump', 'assets/trumpGif.gif');
-        game.load.image('woman', 'assets/womanGif.gif');
-        game.load.image('hilary', 'assets/hillaryGif.gif');
-        game.load.image('mexican', 'assets/mexicanGif.gif');
+        game.load.image('trump', 'assets/trumpGIF.gif');
+        game.load.image('woman', 'assets/womanGIF.gif');
+        game.load.image('hilary', 'assets/hillaryGIF.gif');
+        game.load.image('mexican', 'assets/mexicanGIF.gif');
         game.load.image('arrow', 'assets/images/arrow.gif');
 
-        game.load.audio('Punch', 'assets/audio/punch.mp3');
+        game.load.audio('Punch', 'assets/audio/Punch.mp3');
 
         game.load.audio('mex1', 'assets/audio/AndMexicoWillPayForTheWall.mp3');
         game.load.audio('mex2', 'assets/audio/WhenDoWeBeatMexicoAtTheBorder.mp3');
@@ -72,7 +72,7 @@ window.onload = function() {
     function create () {
                 
         bgMusic = game.add.audio("bg_music")
-        bgMusic.volume = 0.05;
+        bgMusic.volume = 0.025;
         bgMusic.play();
         
         game.stage.backgroundColor = "#fff";
